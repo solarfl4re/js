@@ -54,3 +54,4 @@ function listImages() {
 	var body = document.getElementsByTagName('body')[0];
 	body.insertBefore(img_div, body.firstChild);
 }
+listImages();
