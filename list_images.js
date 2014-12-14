@@ -15,12 +15,14 @@ function listImages() {
     var images = [];
 
     var image_list = document.getElementsByClassName('lst icon')[0];
-    var num_images = image_list.getElementsByTagName('li').length;
     
     // We get the num of images from the image list/carsel, which isn't present if the listing only has 1 image
-    if (num_images == undefined) {
+    if (image_list == undefined) {
         num_images = 1;
+    } else {
+        var num_images = image_list.getElementsByTagName('li').length;
     }
+    
 
     current_pos = 0
 
