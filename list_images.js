@@ -34,9 +34,12 @@ function listImages() {
         
         // URLs can have commas in them - look for the ending quotation mark instead
         // example problematic URL: http://i.ebayimg.com/00/s/MTE5NVgxNjAw/z/POQAAOxyoA1RUJNd/$T2eC16N,!ykE9s7tvVDiBRUJNb7(1w~~60_57.JPG
-        var url_end = imageScript.indexOf('"', url_start);
-
-        images.push(unicodeToString(imageScript.substring(url_start + 14, url_end)));
+        var url_end = imageScript.indexOf('"', url_start + 1);
+        
+        // Unescape and decode url
+        image_url = unicodeToString(imageScript.substring(url_start + 14, url_end));
+        
+        images.push(image_url);
 
         current_pos = url_end
     }
