@@ -61,7 +61,7 @@ function listImages() {
         // link_tag.download = getTitle() + ' ' + (image + 1) + ' of ' + (images.length + 1) + '.jpg';
         // link_tag.innerText = 'Download Image';
         var img_tag = document.createElement('img');
-        img_tag.style = 'width: 600px; height: auto;';
+        img_tag.style = 'max-width: 100%; height: auto; margin: 20px 0px 20px 0px';
         img_tag.src = images[image];
         // img_div.appendChild(link_tag);
         img_div.appendChild(img_tag);
