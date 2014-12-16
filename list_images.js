@@ -27,17 +27,21 @@ function listImages() {
     current_pos = 0
 
     for (i = 0; i < num_images; i++) {
-        var url_start = imageScript.indexOf('maxImageUrl', current_pos);
-        if (url_start == -1) {
+        var image_url_start = imageScript.indexOf('maxImageUrl', current_pos);
+        if (image_url_start == -1) {
             break;
             }
         
+        // URL structure:
+        // "maxImageUrl": "http ... ",
+        var url_start = imageScript.indexOf('http', image_url_start);
+        
         // URLs can have commas in them - look for the ending quotation mark instead
         // example problematic URL: http://i.ebayimg.com/00/s/MTE5NVgxNjAw/z/POQAAOxyoA1RUJNd/$T2eC16N,!ykE9s7tvVDiBRUJNb7(1w~~60_57.JPG
-        var url_end = imageScript.indexOf('"', url_start + 1);
+        var url_end = imageScript.indexOf('"', url_start);
         
         // Unescape and decode url
-        image_url = unicodeToString(imageScript.substring(url_start + 14, url_end));
+        image_url = unicodeToString(imageScript.substring(url_start, url_end));
         
         images.push(image_url);
 
