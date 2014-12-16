@@ -8,7 +8,7 @@ function listImages() {
         return x;
     }
 
-    var imageScript = document.evaluate('//div[@id="JSDF"]/script[4]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null );
+    var imageScript = document.evaluate('//div[@id="JSDF"]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null );
 
     var imageScript = imageScript.singleNodeValue.innerHTML;
 
@@ -34,7 +34,7 @@ function listImages() {
 
         var url_end = imageScript.indexOf(',', url_start);
 
-        images[images.length] = unicodeToString(imageScript.substring(url_start + 14, url_end - 1));
+        images.push(unicodeToString(imageScript.substring(url_start + 14, url_end - 1)));
 
         current_pos = url_end
     }
